@@ -27,7 +27,7 @@ sleep(.1)
 GPIO.output(5,1)
 
 if '/dev/ttyACM1' in glob.glob('/dev/tty*'):
-  ser = serial.Serial('/dev/ttyACM1',115200)
+	ser = serial.Serial('/dev/ttyACM1',115200)
 else:
 	ser = serial.Serial('/dev/ttyACM0',115200)
 while true:
@@ -56,6 +56,7 @@ while true:
 		print "reading..."
 		for a in range(3): #3 lines will be coming to the pi, side, p1 card ID and p2 card ID
 			r = ser.readline()
+			#may need to save s[0] sooner, in case the other things we're doing to the array won't work for the string
 			s.append(rstrip().rstrip('.').replace(" ", ""))
 			#s[0] is the string that says what side p1 is on - "left" or "right"
 			#s[1] is the card ID of player 1
@@ -91,6 +92,7 @@ while true:
 	score2 = 0
 	while score1 < 10 and score2 < 10:
 		while hand_slot_r == 1 and hand_slot_l == 1: #assuming 1 when laser is not obstructed
+		"""need to factor in player's choice of sides. player 1 doesn't have to choose left"""
 			if left_goal == 0: #assuming 0 when the laser is obstructed
 			#also, may change to left_goal and left_goal2
 				score1 += 1
