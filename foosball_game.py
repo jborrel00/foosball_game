@@ -92,23 +92,21 @@ while true:
 	score2 = 0
 	while score1 < 10 and score2 < 10:
 		while hand_slot_r == 1 and hand_slot_l == 1: #assuming 1 when laser is not obstructed
-		"""need to factor in player's choice of sides. player 1 doesn't have to choose left"""
-			if left_goal == 0: #assuming 0 when the laser is obstructed
-			#also, may change to left_goal and left_goal2
-				score1 += 1
-				print score1 #debugging
-				sleep(1)
-			if right_goal == 0:
-				score2 += 1
-				print score2 #debugging
-				sleep(1)
+			if s[0] = 'left':	
+				if left_goal == 0: #assuming 0 when the laser is obstructed
+				#also, may change to left_goal and left_goal2
+					score2 += 1
+				if right_goal == 0:
+					score1 += 1
+			if s[0] = 'right':
+				if right_goal == 0:
+					score2 += 1
+				if left_goal == 0:
+					score1 += 1				
 		while hand_slot_l == 0 or hand_slot_r == 0:
-			if left_goal == 0: 
-				score1 += 0
+			if left_goal == 0 or right_goal == 0:
 				print 'get your hand out of the goal!'
-			if right_goal == 0:
-				score2 += 0
-				print 'get your hand out of the goal!'
+			
 	print 'game over!'
 
 	#sending game data to mysql
